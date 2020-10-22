@@ -1,10 +1,11 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import font
+import tkinter as tk
 import tkinter.messagebox
 # from tkinter import font as tkFont
 
-root=Tk()
+root=tk.Tk()
 # style button
 style = ttk.Style()
 style.configure('TButton', background = 'purple', foreground = 'white',width=20 ,borderwidth=5, focusthickness=0, focuscolor='none',font = ('Sans','10','bold'))
@@ -18,6 +19,7 @@ root.title("Tic Tac Toe")
 # helv36 = tkFont.Font(family='Helvetica', size=36, weight='bold')
 #add Buttons
 bu1=ttk.Button(root,text=' ')
+bu1.pack()
 bu1.grid(row=0,column=0,sticky='snew',ipadx=40,ipady=40)
 bu1.config(command=lambda: ButtonClick(1))
 
@@ -64,9 +66,31 @@ res=ttk.Button(root,text='Restart')
 res.grid(row=3,column=1,sticky='snew',ipadx=40,ipady=40)
 res.config(command=lambda: restartbutton())
 
+vsbotButton_text = tk.StringVar()
+vsbotButton_text.set("Change Type To: Player vs Bot")
+description_text = tk.StringVar()
+description_text.set("You Are Fighting With Friend")
+ 
+vsbotButton=ttk.Button(root,textvariable=vsbotButton_text)
+vsbotButton.grid(row=4,column=0,sticky='snew',ipadx=40,ipady=40)
+vsbotButton.config(command=lambda: ChangeType())
+
+description=ttk.Label(root,textvariable=description_text,background='green3', font = ('Sans','10','italic'),width=30)
+description.grid(row=4,column=1,columnspan = 2,sticky='snew',ipadx=40,ipady=40)
+
 PlayerTurn =1
 b=0
 IsWin=0
+IsWithBot=0
+def ChangeType():
+  global PlayerTurn,b,IsWin
+  restartbutton()
+  if vsbotButton_text.get() =="Change Type To: Player vs Bot":
+    vsbotButton_text.set("Change Type To: P vs P")
+    description_text.set("You Are Fighting With Bot")
+  elif vsbotButton_text.get() =='Change Type To: P vs P':
+    vsbotButton_text.set("Change Type To: Player vs Bot")
+    description_text.set("You Are Fighting With Friend")
 def restartbutton():
     global PlayerTurn,b,IsWin
     PlayerTurn =1
