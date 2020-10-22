@@ -1,9 +1,11 @@
 from tkinter import *
 from tkinter import ttk
 import tkinter.messagebox
+import tkinter.font as font
 
 root=Tk()
 root.title("Tic Tac Toe")
+myFont = font.Font(size=30)
 #add Buttons
 bu1=ttk.Button(root,text=' ')
 bu1.grid(row=0,column=0,sticky='snew',ipadx=40,ipady=40)
@@ -51,12 +53,12 @@ res=ttk.Button(root,text='Restart')
 res.grid(row=3,column=1,sticky='snew',ipadx=40,ipady=40)
 res.config(command=lambda: restartbutton())
 
-a=1
+PlayerTurn =1
 b=0
 c=0
 def restartbutton():
     global a,b,c
-    a=1
+    PlayerTurn =1
     b=0
     c=0
     playerturn['text']="   Player 1 turn!   "
@@ -93,82 +95,82 @@ def disableButton():
 
 
 def ButtonClick(id):
-    global a,b,c
+    global PlayerTurn,b,IsWin
     print("ID:{}".format(id))
 
     #for player 1 turn
-    if id==1 and bu1['text']==' ' and a==1:
+    if id==1 and bu1['text']==' ' and PlayerTurn==1:
         bu1['text']="X"
-        a=0
+        PlayerTurn =0
         b+=1
-    if id==2 and bu2['text']==' ' and a==1:
+    if id==2 and bu2['text']==' ' and PlayerTurn==1:
         bu2['text']="X"
-        a=0
+        PlayerTurn =0
         b+=1
-    if id==3 and bu3['text']==' ' and a==1:
+    if id==3 and bu3['text']==' ' and PlayerTurn==1:
         bu3['text']="X"
-        a=0
+        PlayerTurn =0
         b+=1
-    if id==4 and bu4['text']==' ' and a==1:
+    if id==4 and bu4['text']==' ' and PlayerTurn==1:
         bu4['text']="X"
-        a=0
+        PlayerTurn =0
         b+=1
-    if id==5 and bu5['text']==' ' and a==1:
+    if id==5 and bu5['text']==' ' and PlayerTurn==1:
         bu5['text']="X"
-        a=0
+        PlayerTurn =0
         b+=1
-    if id==6 and bu6['text']==' ' and a==1:
+    if id==6 and bu6['text']==' ' and PlayerTurn==1:
         bu6['text']="X"
-        a=0
+        PlayerTurn =0
         b+=1
-    if id==7 and bu7['text']==' ' and a==1:
+    if id==7 and bu7['text']==' ' and PlayerTurn==1:
         bu7['text']="X"
-        a=0
+        PlayerTurn =0
         b+=1
-    if id==8 and bu8['text']==' ' and a==1:
+    if id==8 and bu8['text']==' ' and PlayerTurn==1:
         bu8['text']="X"
-        a=0
+        PlayerTurn =0
         b+=1
-    if id==9 and bu9['text']==' ' and a==1:
+    if id==9 and bu9['text']==' ' and PlayerTurn==1:
         bu9['text']="X"
-        a=0
+        PlayerTurn =0
         b+=1
     #for player 2 turn
-    if id==1 and bu1['text']==' ' and a==0:
+    if id==1 and bu1['text']==' ' and PlayerTurn==0:
         bu1['text']="O"
-        a=1
+        PlayerTurn =1
         b+=1
-    if id==2 and bu2['text']==' ' and a==0:
+    if id==2 and bu2['text']==' ' and PlayerTurn==0:
         bu2['text']="O"
-        a=1
+        PlayerTurn =1
         b+=1
-    if id==3 and bu3['text']==' ' and a==0:
+    if id==3 and bu3['text']==' ' and PlayerTurn==0:
         bu3['text']="O"
-        a=1
+        PlayerTurn =1
         b+=1
-    if id==4 and bu4['text']==' ' and a==0:
+    if id==4 and bu4['text']==' ' and PlayerTurn==0:
         bu4['text']="O"
-        a=1
+        PlayerTurn =1
         b+=1
-    if id==5 and bu5['text']==' ' and a==0:
+    if id==5 and bu5['text']==' ' and PlayerTurn==0:
         bu5['text']="O"
-        a=1
+        PlayerTurn =1
         b+=1
-    if id==6 and bu6['text']==' ' and a==0:
+    if id==6 and bu6['text']==' ' and PlayerTurn==0:
         bu6['text']="O"
-        a=1
+        PlayerTurn =1
         b+=1
-    if id==7 and bu7['text']==' ' and a==0:
+    if id==7 and bu7['text']==' ' and PlayerTurn==0:
         bu7['text']="O"
-        a=1
+        PlayerTurn =1
         b+=1
-    if id==8 and bu8['text']==' ' and a==0:
+    if id==8 and bu8['text']==' ' and PlayerTurn==0:
         bu8['text']="O"
-        a=1
+        PlayerTurn =1
         b+=1
-    if id==9 and bu9['text']==' ' and a==0:
+    if id==9 and bu9['text']==' ' and PlayerTurn==0:
         bu9['text']="O"
-        a=1
+        PlayerTurn =1
         b+=1
         
     #checking for winner   
@@ -199,9 +201,9 @@ def ButtonClick(id):
             c=1
             tkinter.messagebox.showinfo("Tic Tac Toe","Match is Draw.")
 
-    if a==1 and c==0:
+    if PlayerTurn ==1 and c==0:
         playerturn['text']="   Player 1 turn!   "
-    elif a==0 and c==0:
+    elif PlayerTurn ==0 and c==0:
         playerturn['text']="   Player 2 turn!   "
             
 root.mainloop()
