@@ -1,15 +1,21 @@
 from tkinter import *
 from tkinter import ttk
 import tkinter.messagebox
-import tkinter.font as font
+# from tkinter import font as tkFont
 
 root=Tk()
+style = ttk.Style()
+# style.theme_use('alt')
+style.configure('TButton', background = 'purple', foreground = 'white', width = 20, borderwidth=5, focusthickness=0, focuscolor='none')
+style.map('TButton', background=[('active','purple')])
+
 root.title("Tic Tac Toe")
-myFont = font.Font(size=30)
+# helv36 = tkFont.Font(family='Helvetica', size=36, weight='bold')
 #add Buttons
 bu1=ttk.Button(root,text=' ')
 bu1.grid(row=0,column=0,sticky='snew',ipadx=40,ipady=40)
 bu1.config(command=lambda: ButtonClick(1))
+
 
 bu2=ttk.Button(root,text=' ')
 bu2.grid(row=0,column=1,sticky='snew',ipadx=40,ipady=40)
@@ -43,10 +49,10 @@ bu9=ttk.Button(root,text=' ')
 bu9.grid(row=2,column=2,sticky='snew',ipadx=40,ipady=40)
 bu9.config(command=lambda: ButtonClick(9))
 
-playerturn=ttk.Label(root,text="   Player 1 turn!  ")
+playerturn=ttk.Label(root,text="   Player 1 turn!  ",background='yellow3')
 playerturn.grid(row=3,column=0,sticky='snew',ipadx=40,ipady=40)
 
-playerdetails=ttk.Label(root,text="    Player 1 is X\n\n    Player 2 is O")
+playerdetails=ttk.Label(root,text="    Player 1 is X\n\n    Player 2 is O",background='cyan')
 playerdetails.grid(row=3,column=2,sticky='snew',ipadx=40,ipady=40)
 
 res=ttk.Button(root,text='Restart')
@@ -55,12 +61,12 @@ res.config(command=lambda: restartbutton())
 
 PlayerTurn =1
 b=0
-c=0
+IsWin=0
 def restartbutton():
-    global a,b,c
+    global PlayerTurn,b,IsWin
     PlayerTurn =1
     b=0
-    c=0
+    IsWin=0
     playerturn['text']="   Player 1 turn!   "
     bu1['text']=' '
     bu2['text']=' '
@@ -183,7 +189,7 @@ def ButtonClick(id):
         bu1['text']=='X' and bu5['text']=='X' and bu9['text']=='X' or
         bu3['text']=='X' and bu5['text']=='X' and bu7['text']=='X'):
             disableButton()
-            c=1
+            IsWin=1
             tkinter.messagebox.showinfo("Tic Tac Toe","Winner is player 1")
     elif( bu1['text']=='O' and bu2['text']=='O' and bu3['text']=='O' or
         bu4['text']=='O' and bu5['text']=='O' and bu6['text']=='O' or
@@ -194,16 +200,16 @@ def ButtonClick(id):
         bu1['text']=='O' and bu5['text']=='O' and bu9['text']=='O' or
         bu3['text']=='O' and bu5['text']=='O' and bu7['text']=='O'):
             disableButton()
-            c=1
+            IsWin=1
             tkinter.messagebox.showinfo("Tic Tac Toe","Winner is player 2")
     elif b==9:
             disableButton()
-            c=1
+            IsWin=1
             tkinter.messagebox.showinfo("Tic Tac Toe","Match is Draw.")
 
-    if PlayerTurn ==1 and c==0:
+    if PlayerTurn ==1 and IsWin==0:
         playerturn['text']="   Player 1 turn!   "
-    elif PlayerTurn ==0 and c==0:
+    elif PlayerTurn ==0 and IsWin==0:
         playerturn['text']="   Player 2 turn!   "
             
 root.mainloop()
