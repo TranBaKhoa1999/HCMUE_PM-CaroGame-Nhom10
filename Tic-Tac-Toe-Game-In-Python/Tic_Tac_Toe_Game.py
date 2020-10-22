@@ -1,13 +1,18 @@
 from tkinter import *
 from tkinter import ttk
+from tkinter import font
 import tkinter.messagebox
 # from tkinter import font as tkFont
 
 root=Tk()
+# style button
 style = ttk.Style()
-# style.theme_use('alt')
-style.configure('TButton', background = 'purple', foreground = 'white', width = 20, borderwidth=5, focusthickness=0, focuscolor='none')
+style.configure('TButton', background = 'purple', foreground = 'white',width=20 ,borderwidth=5, focusthickness=0, focuscolor='none',font = ('Sans','10','bold'))
 style.map('TButton', background=[('active','purple')])
+# end style button
+# font style
+myFont = font.Font(family = 'Helvetica', size = 20)
+# end font style
 
 root.title("Tic Tac Toe")
 # helv36 = tkFont.Font(family='Helvetica', size=36, weight='bold')
@@ -49,10 +54,10 @@ bu9=ttk.Button(root,text=' ')
 bu9.grid(row=2,column=2,sticky='snew',ipadx=40,ipady=40)
 bu9.config(command=lambda: ButtonClick(9))
 
-playerturn=ttk.Label(root,text="   Player 1 turn!  ",background='yellow3')
+playerturn=ttk.Label(root,text="   Player 1 turn!  ",background='yellow3',font = ('Sans','10','bold'))
 playerturn.grid(row=3,column=0,sticky='snew',ipadx=40,ipady=40)
 
-playerdetails=ttk.Label(root,text="    Player 1 is X\n\n    Player 2 is O",background='cyan')
+playerdetails=ttk.Label(root,text="    Player 1 is X\n\n    Player 2 is O",background='cyan', font = ('Sans','10','italic'))
 playerdetails.grid(row=3,column=2,sticky='snew',ipadx=40,ipady=40)
 
 res=ttk.Button(root,text='Restart')
