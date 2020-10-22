@@ -56,26 +56,31 @@ bu9=ttk.Button(root,text=' ')
 bu9.grid(row=2,column=2,sticky='snew',ipadx=40,ipady=40)
 bu9.config(command=lambda: ButtonClick(9))
 
-playerturn=ttk.Label(root,text="   Player 1 turn!  ",background='yellow3',font = ('Sans','10','bold'))
+# Text range
+vsbotButton_text = tk.StringVar()
+vsbotButton_text.set("Change Type To: Player vs Bot")
+
+description_text = tk.StringVar()
+description_text.set("You Are Fighting With Friend")
+
+playerdetails_text =tk.StringVar()
+playerdetails_text.set("    Player 1 is X\n\n    Player 2 is O")
+# end text range
+playerturn=ttk.Label(root,text="   Player 1 turn!  ",background='yellow3',font = ('Sans','13','bold'))
 playerturn.grid(row=3,column=0,sticky='snew',ipadx=40,ipady=40)
 
-playerdetails=ttk.Label(root,text="    Player 1 is X\n\n    Player 2 is O",background='cyan', font = ('Sans','10','italic'))
+playerdetails=ttk.Label(root,textvariable=playerdetails_text,background='cyan', font = ('Sans','15','italic'))
 playerdetails.grid(row=3,column=2,sticky='snew',ipadx=40,ipady=40)
 
 res=ttk.Button(root,text='Restart')
 res.grid(row=3,column=1,sticky='snew',ipadx=40,ipady=40)
 res.config(command=lambda: restartbutton())
-
-vsbotButton_text = tk.StringVar()
-vsbotButton_text.set("Change Type To: Player vs Bot")
-description_text = tk.StringVar()
-description_text.set("You Are Fighting With Friend")
  
 vsbotButton=ttk.Button(root,textvariable=vsbotButton_text)
 vsbotButton.grid(row=4,column=0,sticky='snew',ipadx=40,ipady=40)
 vsbotButton.config(command=lambda: ChangeType())
 
-description=ttk.Label(root,textvariable=description_text,background='green3', font = ('Sans','10','italic'),width=30)
+description=ttk.Label(root,textvariable=description_text,background='green3', font = ('Sans','20','italic'),width=30)
 description.grid(row=4,column=1,columnspan = 2,sticky='snew',ipadx=40,ipady=40)
 
 PlayerTurn =1
@@ -88,9 +93,11 @@ def ChangeType():
   if vsbotButton_text.get() =="Change Type To: Player vs Bot":
     vsbotButton_text.set("Change Type To: P vs P")
     description_text.set("You Are Fighting With Bot")
+    playerdetails_text.set("    You is X\n\n    Bot is O")
   elif vsbotButton_text.get() =='Change Type To: P vs P':
     vsbotButton_text.set("Change Type To: Player vs Bot")
     description_text.set("You Are Fighting With Friend")
+    playerdetails_text.set("    Player 1 is X\n\n    Player 2 is O")
 def restartbutton():
     global PlayerTurn,b,IsWin
     PlayerTurn =1
