@@ -292,17 +292,21 @@ def ButtonClick(id):
           b+=1
           isTrue =1
       #for player 2 turn
-      # checkWin(b)
-      if isTrue==1 and IsWin==0 and b<9:
-        BotTurn()
-        b+=1
-      print(b)  
       checkWin(b)
+      if isTrue==1 and IsWin==0 and b<9:
+        BotAttack()
+        b+=1
+        checkWin(b)
+      print(b)  
     # if PlayerTurn ==1 and IsWin==0:
     #     playerturn['text']="   Player 1 turn!   "
     # elif PlayerTurn ==0 and IsWin==0:
     #     playerturn['text']="   Player 2 turn!   "
-def BotTurn():
+def BotAttack():
+  isAttack = 0
+  if isAttack ==0:
+    BotDef()    
+def BotDef():
   global b
   # check ngang
   if bu1['text']=="X" and bu2['text']=="X" and bu3['text']==' ':
@@ -318,7 +322,7 @@ def BotTurn():
   elif bu5['text']=='X' and bu6['text']=='X'and bu4['text']==' ':
    bu4['text']='O'
   elif bu7['text']=="X" and bu8['text']=="X" and bu9['text']==' ':
-    bu3['text']="O"
+    bu9['text']="O"
   elif bu7['text']=='X' and bu9['text']=='X'and bu8['text']==' ':
    bu8['text']="O"
   elif bu8['text']=='X' and bu9['text']=='X'and bu7['text']==' ':
@@ -348,7 +352,7 @@ def BotTurn():
   elif bu3['text']=="X" and bu5['text']=="X" and bu7['text']==" ":
     bu7['text']="O"
   elif bu5['text']=="X" and bu7['text']=="X" and bu3['text']==" ":
-    bu5['text']="O"
+    bu3['text']="O"
   elif bu1['text']=="X" and bu5['text']=="X" and bu9['text']==" ":
     bu9['text']="O"
   elif bu1['text']=="X" and bu9['text']=="X" and bu5['text']==" ":
