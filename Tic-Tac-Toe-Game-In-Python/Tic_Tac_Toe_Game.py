@@ -304,6 +304,80 @@ def ButtonClick(id):
     #     playerturn['text']="   Player 2 turn!   "
 def BotAttack():
   isAttack = 0
+  if bu1['text']=="O" and bu2['text']=="O" and bu3['text']==' ':
+    bu3['text']="O"
+    isAttack=1
+  elif bu1['text']=="O" and bu3['text']=="O"and bu2['text']==' ':
+   bu2['text']="O"
+   isAttack=1
+  elif bu2['text']=="O" and bu3['text']=="O"and bu1['text']==' ':
+   bu1['text']='O' 
+   isAttack=1  
+  elif bu4['text']=="O" and bu5['text']=="O"and bu6['text']==' ':
+    bu6['text']="O"
+    isAttack=1
+  elif bu4['text']=="O" and bu6['text']=="O"and bu5['text']==' ':
+   bu5['text']="O"
+   isAttack=1
+  elif bu5['text']=="O" and bu6['text']=="O"and bu4['text']==' ':
+   bu4['text']='O'
+   isAttack=1
+  elif bu7['text']=="O" and bu8['text']=="O" and bu9['text']==' ':
+    bu9['text']="O"
+    isAttack=1
+  elif bu7['text']=="O" and bu9['text']=="O"and bu8['text']==' ':
+   bu8['text']="O"
+   isAttack=1
+  elif bu8['text']=="O" and bu9['text']=="O"and bu7['text']==' ':
+   bu7['text']='O'
+   isAttack=1
+  # check doc
+  elif bu1['text']=="O" and bu4['text']=="O" and bu7['text']==' ':
+    bu7['text']='O'
+    isAttack=1
+  elif bu1['text']=="O" and bu7['text']=="O" and bu4['text']==' ':
+    bu4['text']='O'
+    isAttack=1
+  elif bu4['text']=="O" and bu7['text']=="O" and bu1['text']==' ':
+    bu1['text']='O'
+    isAttack=1
+  elif bu2['text']=="O" and bu5['text']=="O" and bu8['text']==' ':
+    bu8['text']='O'
+    isAttack=1
+  elif bu2['text']=="O" and bu8['text']=="O" and bu5['text']==' ':
+    bu5['text']='O'
+    isAttack=1
+  elif bu5['text']=="O" and bu8['text']=="O" and bu2['text']==' ':
+    bu2['text']='O'
+    isAttack=1
+  elif bu3['text']=="O" and bu6['text']=="O" and bu9['text']==' ':
+    bu9['text']='O'
+    isAttack=1
+  elif bu3['text']=="O" and bu9['text']=="O" and bu6['text']==' ':
+    bu6['text']='O'
+    isAttack=1
+  elif bu6['text']=="O" and bu9['text']=="O" and bu3['text']==' ':
+    bu3['text']='O'
+    isAttack=1   
+  # check cheo
+  elif bu7['text']=="O" and bu3['text']=="O" and bu5['text']==" ":
+    bu5['text']="O"
+    isAttack=1
+  elif bu3['text']=="O" and bu5['text']=="O" and bu7['text']==" ":
+    bu7['text']="O"
+    isAttack=1
+  elif bu5['text']=="O" and bu7['text']=="O" and bu3['text']==" ":
+    bu3['text']="O"
+    isAttack=1
+  elif bu1['text']=="O" and bu5['text']=="O" and bu9['text']==" ":
+    bu9['text']="O"
+    isAttack=1
+  elif bu1['text']=="O" and bu9['text']=="O" and bu5['text']==" ":
+    bu5['text']="O"
+    isAttack=1
+  elif bu5['text']=="O" and bu9['text']=="O" and bu1['text']==" ":
+    bu1['text']="O"
+    isAttack=1
   if isAttack ==0:
     BotDef()    
 def BotDef():
